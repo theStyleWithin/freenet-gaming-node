@@ -1,0 +1,51 @@
+Phase 0 – Research & Mapping (do this before writing almost any code)
+
+Goal: Understand exactly what Mario Kart 7 expects when it tries to go online.
+
+Deliverables:
+List of every hostname the game contacts
+What each service does (auth, matchmaking, ranking, etc.)
+Rough packet flow for login → lobby → race
+Whether the actual race traffic stays on the server or goes peer-to-peer after matchmaking
+Existing public resources (Pretendo’s MK7 server, NEX/PRUDP docs, Wireshark captures if available)
+Phase 1 – Local Gateway Foundation (the critical first floor)
+
+Goal: Make a real 3DS or emulator successfully log in and reach a lobby using only your local PC. No Freenet yet.
+
+This is the most important phase. Everything else depends on it.Phase 2 – Basic Lobby Visibility
+
+Goal: Two local gateways (or one gateway + one real Pretendo connection for testing) can see each other’s lobbies.Phase 3 – Freenet Discovery Layer
+
+Goal: Replace the temporary discovery method with Freenet contracts for publishing and finding lobbies.Phase 4 – Gameplay Traffic Transport
+
+Goal: Decide and implement how the actual race packets move (pure Freenet, hybrid P2P + Freenet discovery, or volunteered relays).
+
+Only start this after you understand MK7’s real traffic pattern.Phase 5 – Hardening & Usability
+
+Goal: Better NAT handling, anti-spam on the Freenet side, simple configuration UI, packaging so other people can run the node easily.Phase 6 – Expansion
+
+Goal: Support a second game, then a third, while keeping the architecture clean.Recommended Starting Point for Phase 1 (the foundation)Start with this single, focused goal:Build the smallest possible local DNS + authentication stub that lets a 3DS (or Citra/Azahar) pass the Mario Kart 7 login wall and reach the online menu / lobby screen.This is the healthiest and most crucial first floor because:
+It proves the DNS redirection works.
+It forces you to confront the hardest part early (faking the auth/ticket responses).
+It gives you a working feedback loop (you can actually test on hardware or emulator).
+Everything later (Freenet discovery, gameplay transport, etc.) builds on top of a console that can already talk to your software instead of Nintendo’s.
+Concrete first tasks inside Phase 1:
+DNS Server only
+Make a tiny DNS server that answers the known MK7 hostnames with your PC’s local IP.
+Point the 3DS at that IP and confirm the console is hitting your machine instead of Nintendo.
+
+Capture the real traffic
+Use Wireshark (or similar) while the 3DS tries to go online.
+Record what it sends during the login sequence.
+
+Minimal Auth Stub
+Implement the absolute minimum responses needed so the console stops getting error codes and reaches the online menu.
+Use Pretendo’s open-source MK7 server as a reference, but start as small as possible — don’t copy the whole thing.
+
+Success criteria for Phase 1
+3DS (or emulator) launches Mario Kart 7
+Goes online without an immediate error
+Reaches the multiplayer / lobby screen
+All of this happens while talking only to your local gateway
+
+Do not touch Freenet, lobby announcements, or gameplay packet forwarding until the above works reliably.
