@@ -1,0 +1,9 @@
+Important Project Constraint 
+
+Minimal / Zero Console ModdingThe Freenet Gaming Node must be designed so that the only change required on the console itself is setting a custom DNS server (pointing it at the PC running the Gaming Node).Key rules:
+No custom firmware (CFW) should be required.
+No homebrew, patches, or game modifications should be required on the console.
+No need to install anything on the console beyond changing DNS settings in the system network configuration.
+The Gaming Node + Freenet must handle everything else on the PC side.
+The system should work on stock / unmodified consoles whenever the console allows custom DNS (this includes many 3DS, Wii U, Wii, PS3, PS4, Xbox 360, etc. systems).
+If a particular console or game later proves that pure DNS redirection is not enough, document it clearly as a limitation, but the default design goal remains: zero console modding, only DNS change + PC-side Gaming Node + Freenet.The finished product should feel like a normal, stable Freenet application that a regular user can install on their computer, start up, point their console’s DNS at it, and play.
