@@ -1,0 +1,51 @@
+Vision:
+Create a fully decentralized, user-run online gaming network built on Freenet.
+
+Players should be able to play multiplayer games on older (and some newer) consoles without depending on corporate servers, permanent centralized private servers, or forced social platforms.The network is maintained by the players themselves. Anyone running the Gaming Node helps keep the system alive.Core Goals
+Redirect console online traffic into Freenet so multiplayer sessions can happen without official servers.
+Require as little console modification as possible — ideally only a DNS change.
+Keep player communication (voice/text chat) completely outside the system. Players use whatever platform they already prefer.
+Make the Gaming Node a stable, usable Freenet application that regular people can run.
+Support a wide range of consoles over time (3DS, Wii U, Wii, GameCube, Switch, PS3, PS4, PS5, PSP, PS Vita, Xbox 360, Dreamcast, and others).
+Hard Constraints
+Zero or near-zero console modding: Stock consoles should work by only changing DNS settings.
+Freenet handles both discovery and gameplay traffic (with hybrid options if pure Freenet latency is too high for a specific game).
+No forced integration with Discord, X, Telegram, or any other chat service.
+The system must remain censorship-resistant and free of single points of failure.
+High-Level Architecture
+Local Gaming Node (runs on the player’s PC)
+Acts as a DNS server for the console
+Provides fake authentication / entitlement responses
+Connects to Freenet
+Publishes and discovers game sessions
+Carries or helps route gameplay traffic
+
+Freenet Layer
+Used for lobby/session discovery
+Used to transport (or help transport) actual game packets
+Contracts enforce spam resistance and data validity
+
+Console Side
+Only change required: set DNS to the PC running the Gaming Node
+
+Development PhasesPhase 1 – Core Local Gateway
+
+Build the basic PC application that can intercept DNS and satisfy a console’s login requirements so it reaches the online menu. This is the foundation everything else rests on.Phase 2 – Multi-Console Foundation
+
+Make the architecture modular so new consoles can be added cleanly without rewriting the core.Phase 3 – Freenet Discovery
+
+Implement Freenet contracts that let Gaming Nodes publish and find active game lobbies/sessions.Phase 4 – Gameplay Traffic
+
+Connect the actual multiplayer packets between nodes (pure Freenet or hybrid P2P + Freenet discovery). Begin real online stress tests.Phase 5 – Connection Reliability
+
+Add proper NAT traversal, hole-punching, and optional volunteer relays so connections work across typical home networks.Phase 6 – Usability & Stability
+
+Turn the node into a proper, easy-to-run Freenet application with good configuration, logging, and packaging.Phase 7 – Broad Support & Testing
+
+Expand to many consoles and run larger multiplayer stress tests across different platforms and games.Phase 8 – Ecosystem
+
+Tools and features that let communities form long-lived Freenet gaming groups and keep the network healthy over time.Success Criteria (Long-term)
+A player can install Freenet + the Gaming Node on a normal PC.
+They change the DNS on a stock console.
+They can find and join multiplayer games running entirely through the Freenet-based network.
+No company servers, no permanent central hosts, and no forced chat platforms are required.
