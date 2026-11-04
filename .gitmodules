@@ -6,7 +6,25 @@
 	url = https://github.com/theStyleWithin/emufii
 [submodule "reference/freenet-core"]
 	path = reference/freenet-core
-	url = https://github.com/freenet/freenet-core
+	url = https://github.com/theStyleWithin/freenet-core
 [submodule "reference/freenet-stdlib"]
 	path = reference/freenet-stdlib
-	url = https://github.com/freenet/freenet-stdlib
+	url = https://github.com/theStyleWithin/freenet-stdlib
+[submodule "reference/river"]
+	path = reference/river
+	url = https://github.com/theStyleWithin/river
+[submodule "reference/mail"]
+	path = reference/mail
+	url = https://github.com/theStyleWithin/mail
+[submodule "reference/atlas"]
+	path = reference/atlas
+	url = https://github.com/theStyleWithin/atlas
+[submodule "reference/freenet-git"]
+	path = reference/freenet-git
+	url = https://github.com/theStyleWithin/freenet-git
+[submodule "reference/freenet-bitcoin"]
+	path = reference/freenet-bitcoin
+	url = https://github.com/theStyleWithin/freenet-bitcoin
+[submodule "reference/web"]
+	path = reference/web
+	url = https://github.com/theStyleWithin/web
