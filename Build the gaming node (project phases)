@@ -1,0 +1,44 @@
+Project GoalBuild a local PC application (“Gaming Node”) that can intercept and redirect console online traffic into Freenet, so that multiplayer sessions can run over a decentralized, user-run network instead of corporate servers. The node will eventually support many platforms (3DS, Wii U, Wii, GameCube, Switch, PS3, PS4, PS5, PSP, PS Vita, Xbox 360, Dreamcast, etc.) through the same core architecture.Phase 0 – Foundation Research
+Map how different consoles perform DNS lookups and online authentication.
+Document common patterns across platforms (DNS redirection, ticket/auth systems, matchmaking protocols).
+Identify which consoles are easiest to start with based on existing public documentation and reverse-engineering work.
+Define success criteria for a minimal working node.
+Phase 1 – Core Local GatewayGoal: Create the basic software that runs on a PC and can pretend to be the official servers for a console.Key deliverables:
+Local DNS server that answers console hostname requests with the PC’s own address.
+Minimal authentication / entitlement stub that prevents the console from getting stuck at login screens.
+Ability to log and inspect the traffic the console sends.
+Clean project structure that can later support multiple console modules.
+This is the critical first floor. Nothing else matters until a console can successfully talk to the local node instead of the original servers.Phase 2 – Multi-Console Abstraction
+Design a modular system so new consoles can be added without rewriting the core.
+Create a common interface for:
+DNS handling
+Authentication responses
+Session / lobby management
+
+Begin adding support for a second and third console family to prove the abstraction works.
+Phase 3 – Freenet Discovery Layer
+Design Freenet contracts for publishing and discovering game lobbies/sessions.
+Implement signed, expiring, spam-resistant announcements (“I am hosting / looking for a match”).
+Allow two or more Gaming Nodes to find each other through Freenet without any central server.
+Phase 4 – Gameplay Traffic Transport
+Implement the mechanism that moves actual game packets between nodes.
+Support both pure Freenet transport and hybrid modes (Freenet for discovery + direct P2P or volunteered relays for low-latency gameplay).
+Begin controlled online stress tests by redirecting real console traffic into Freenet and measuring latency, reliability, and playability.
+Phase 5 – NAT, Relays & Reliability
+Add STUN-style discovery and UDP hole-punching.
+Create a system for nodes to volunteer as temporary relays when direct connections fail.
+Improve connection stability across different home network types (cone NAT, symmetric NAT, CGNAT, etc.).
+Phase 6 – Hardening & Usability
+Simple configuration interface (or config files) so non-programmers can run a node.
+Better logging, error handling, and diagnostics.
+Packaging and distribution so other people can easily install and test the node.
+Security basics (key management, announcement validation, rate limiting).
+Phase 7 – Broad Platform Expansion & Stress Testing
+Systematically add support for more consoles and handhelds.
+Run larger-scale online stress tests by having multiple real consoles (Switch, 3DS, Wii U, PS3, Xbox 360, etc.) connect through Freenet Gaming Nodes.
+Measure and improve real-world multiplayer performance across different games and platforms.
+Document which games work well over Freenet and which need hybrid transport.
+Phase 8 – Ecosystem & Longevity
+Tools for community-run public or private Freenet gaming networks.
+Easy way for players to publish and join persistent communities/lobbies.
+Long-term maintenance features (auto-updates for contracts, migration paths, etc.).
