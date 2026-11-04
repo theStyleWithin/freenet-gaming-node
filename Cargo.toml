@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/lobby-types",
+    "crates/lobby-contract",
+    "crates/node-core",
+    "crates/console-3ds",
+    "crates/freenet-adapter",
+]
+# Reference projects are other people's workspaces; never build them as ours.
+exclude = ["reference"]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+license = "AGPL-3.0-or-later"
+publish = false
+
+[workspace.dependencies]
+freenet-stdlib = "0.12.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ed25519-dalek = { version = "2", default-features = false, features = ["std"] }
+thiserror = "2"
+rand = "0.8"

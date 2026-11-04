@@ -22,3 +22,22 @@ Stretch Idea: Browser-Based Emulation
 One direction worth exploring: forking existing emulators and embedding them as apps that run directly on the Freenet web, with users supplying their own privately and legally owned ROMs. Since Freenet is censorship-resistant by design, and these emulators would run on the network using each user's own hardware for processing/graphics, they'd be much harder to take down — and could stay available indefinitely.
 
 These are the concepts as they stand for now.
+
+
+## Repository layout
+
+| Path | What |
+|---|---|
+| `crates/lobby-types` | Lobby data model, signing, merge rules (pure Rust, unit-tested) |
+| `crates/lobby-contract` | Freenet WASM contract wrapping `lobby-types` |
+| `crates/node-core` | Console-agnostic traits (`ConsoleModule`, `DnsPolicy`, `AuthResponder`, `SessionManager`) |
+| `crates/console-3ds` | 3DS / Mario Kart 7 module (Phase 0-1 stub, hostname list intentionally empty) |
+| `crates/freenet-adapter` | The only seam to Freenet; in-memory directory for now |
+| `reference/` | Read-only submodules: our Freenet forks, RetroArch, emufii |
+| `docs/FREENET_ANALYSIS.md` | Analysis of freenet.org and the forks |
+
+```
+git submodule update --init --depth 1   # fetch reference projects
+cargo test --workspace
+cargo build -p lobby-contract --target wasm32-unknown-unknown --release
+```

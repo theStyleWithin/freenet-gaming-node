@@ -1,0 +1,11 @@
+[package]
+name = "freenet-adapter"
+description = "Thin seam between the Gaming Node and Freenet; in-memory directory until Phase 3"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+lobby-types = { path = "../lobby-types" }
+thiserror.workspace = true

@@ -1,0 +1,10 @@
+[package]
+name = "console-3ds"
+description = "Nintendo 3DS / Citra console module (Phase 0-1 stub; Mario Kart 7 first)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+node-core = { path = "../node-core" }
